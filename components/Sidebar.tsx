@@ -28,11 +28,15 @@ const Sidebar: React.FC<SidebarProps> = ({ activeCategory, setActiveCategory, is
 
   return (
     <>
-      {/* Mobile Toggle */}
+      {/* Mobile Header with Toggle */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 p-4 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800 flex justify-between items-center transition-colors duration-300">
         <div className="font-serif font-bold text-lg text-stone-900 dark:text-stone-100">Reading Africa</div>
         <div className="flex items-center gap-4">
-          <button onClick={toggleTheme} className="text-stone-600 dark:text-stone-400 p-1">
+          <button 
+            onClick={toggleTheme} 
+            className="text-stone-600 dark:text-stone-400 p-2 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
+            aria-label="Toggle theme"
+          >
              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-stone-600 dark:text-stone-400">
@@ -88,17 +92,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeCategory, setActiveCategory, is
           </ul>
         </nav>
 
-        <div className="p-6 border-t border-stone-200 dark:border-stone-800 flex justify-between items-end">
-          <div className="text-[10px] text-stone-400 dark:text-stone-500 leading-relaxed">
-            &copy; 2024 Reading Africa.<br/>
-          </div>
-          <button 
-            onClick={toggleTheme} 
-            className="hidden md:block text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors p-2 rounded-full hover:bg-stone-200 dark:hover:bg-stone-800"
-            aria-label="Toggle Dark Mode"
-          >
-             {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
+        <div className="p-6 border-t border-stone-200 dark:border-stone-800">
+          <p className="text-[10px] text-stone-400 dark:text-stone-500 leading-relaxed">
+            &copy; 2024 Reading Africa.
+          </p>
         </div>
       </aside>
 

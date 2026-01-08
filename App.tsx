@@ -7,6 +7,7 @@ import StartHere from './components/StartHere';
 import ForJournalists from './components/ForJournalists';
 import Contribution from './components/Contribution';
 import { Category } from './types';
+import { Sun, Moon } from 'lucide-react';
 import { 
   ALL_MEDIA, 
   ALL_BOOKS, 
@@ -111,7 +112,27 @@ const App: React.FC = () => {
         toggleTheme={toggleTheme}
       />
       
-      <main className="flex-1 overflow-y-auto h-full pt-16 md:pt-0">
+      <main className="flex-1 overflow-y-auto h-full pt-16 md:pt-0 relative">
+        {/* Desktop Theme Toggle - Floating Top Right */}
+        <div className="hidden md:block fixed top-6 right-8 z-50">
+          <button 
+            onClick={toggleTheme}
+            className="group flex items-center justify-center p-3 rounded-full bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border border-stone-200 dark:border-stone-700 shadow-sm hover:shadow-md hover:border-earth-clay/50 dark:hover:border-earth-ochre/50 transition-all duration-300"
+            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+             <div className="relative w-5 h-5">
+                <Sun 
+                  size={20} 
+                  className={`absolute inset-0 text-stone-500 hover:text-earth-clay transition-all duration-300 transform ${isDarkMode ? 'rotate-90 opacity-0 scale-50' : 'rotate-0 opacity-100 scale-100'}`} 
+                />
+                <Moon 
+                  size={20} 
+                  className={`absolute inset-0 text-stone-400 hover:text-earth-ochre transition-all duration-300 transform ${isDarkMode ? 'rotate-0 opacity-100 scale-100' : '-rotate-90 opacity-0 scale-50'}`} 
+                />
+             </div>
+          </button>
+        </div>
+
         {renderContent()}
       </main>
     </div>
